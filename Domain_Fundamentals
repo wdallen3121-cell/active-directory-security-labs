@@ -1,0 +1,15 @@
+#Windows Domains
+## Objectives
+Learn the purpose of a Windows Domain
+## Key Components
+| File Servers | central storage and sharepoint for files accessible to multiple users/computers |
+| Database Servers | provides storage, organization and service of data for apps and app users |
+| Workstations | client-user endpoint that runs client software and has limited access to domain services on the connected network |
+| Desktops | domain connected device that runs the Windows GUI and provides interactive environment for end-users
+## Security Relevance
+- file servers should be monitored for excessive access/access at unusual times
+- database servers handle critical information access should be limited to essential users
+- workstations are common initial entry for malware due to contact with untrusted networks
+## Key Takeaways
+- domains enable efficient provisioning and security of the various components in a connnected network
+
