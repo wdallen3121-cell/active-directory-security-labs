@@ -1,0 +1,11 @@
+# AD DS Fundamentals
+## Lab Overview
+Examine core components and structure of Active Direcotry
+## Objectives
+- Identify default OUs and Security Groups 
+- Learn how to create/configure users and groups
+- Navigate the hierarchical structure of AD DS
+## Key Concepts
+| Objects | configurable representations of persons or services in a network |
+| Security Groups | defined collection of users, machines or other groups that grant varying access to network resources
+| Organization Unit(OU) | containers that organize objects by structure and enable administration over sets of objects by means of GPOs | 
