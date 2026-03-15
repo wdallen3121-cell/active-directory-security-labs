@@ -1,6 +1,6 @@
 # AD DS Fundamentals
 ## Lab Overview
-Examine core components and structure of Active Direcotry
+Examine core components and structure of Active Directory Users and Computers
 ## Objectives
 - Identify default OUs and Security Groups 
 - Learn how to create/configure users and groups
@@ -9,3 +9,24 @@ Examine core components and structure of Active Direcotry
 | Objects | configurable representations of persons or services in a network |
 | Security Groups | defined collection of users, machines or other groups that grant varying access to network resources
 | Organization Unit(OU) | containers that organize objects by structure and enable administration over sets of objects by means of GPOs | 
+## Environment 
+- Platform: TryHackMe.com VM
+- OS: Windows Server 2019
+- Directory Service: Active Directory
+## Lab Walkthrogh
+### Step 1 - Access Active Directory Users and Computers
+Gives users an interactive view of the current and various domains, OU, child OUs, security groups and users
+### Step 2 - Double-Click the OU named THM
+Brought down a list of (5) child OUs that mimicked the organization of a business
+### Step 3 - Left-Click on each of the child OUs
+On the right panel of the screen it showed a list of the user objects in each child OU
+### Step 4 - Right-Click on the OU named THM, hover over "new", Left-Click "Organizational Unit"
+Allows provisioning of a child OU under THM
+## Security Relevance
+Objects and Security Groups should have least privilege princpals applied to critical resources and service in a Wndows Domain.
+By applying least privilege it ensures that if service accounts are obtained malicioulsy the harm is mitigated
+It is important that account passwords be of adequate length and complexity as well as changed periodically.
+## Skills Demonstrated
+Creating child OUs
+Navigating domain hierarchy
+Change User Object passwords
