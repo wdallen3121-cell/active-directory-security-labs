@@ -1,0 +1,85 @@
+# Managing Users in AD
+
+## Lab Overview
+This lab further directs users on how to manage OUs and User objects
+
+## Objectives
+- Learn how to delete and delegate users
+- Ensure users have proper privilegs and access to resources
+- Use Powershell to chanage user passwords
+
+## Key Concepts
+| Delegatation of Control Wizard | Server responsible for authentication and directory services |
+| RDP| Microsoft directory service used to manage users, computers, and permissions |
+| Powershell | Logical containers used to organize users and resources |
+
+## Environment
+Platform: TryHackMe
+Operating System: Windows Server
+Directory Service: AD DS
+CLT: Powershell
+
+## Lab Walkthrough
+
+### Delegate Control to a User over an OU(inside ADUC)
+- Select 'View' from the top of the screen
+- Select 'Advanced Features'
+- Right-Click the OU that the user is delegating control over
+- in the Delegation of Control Wizard, click 'Next'until you get to the Users and Groups section
+- Click Add, type the name of the user/group that is being delegated control, then press 'Next'
+- Check the box of the privilege that is to be delegated
+- Click Finish to complete the process
+
+### OU Deletion
+- Right-Click on OU to be deleted
+- Select Properties
+- Select the Object Tab
+- Uncheck the box that says "Protect object from accidental deletion"
+- Select 'OK'
+- Right-click the OU/User to be deleted
+- Select 'Yes' when prompted to verify the deletion request
+
+### Step 3 – Identify Key Components
+Explain the important objects or services.
+
+---
+
+## Security Relevance
+
+Why this matters for cybersecurity.
+
+Example:
+
+Active Directory is a primary target for attackers because it controls authentication and authorization across enterprise networks.
+
+Compromise of a Domain Controller can lead to full domain compromise.
+
+---
+
+## SOC Analyst Perspective
+
+What security teams monitor.
+
+- Suspicious login attempts
+- Privilege escalation
+- Account lockouts
+- Unusual authentication patterns
+
+---
+
+## Key Takeaways
+
+Summarize the main lessons learned.
+
+- Active Directory centralizes authentication
+- Domain controllers validate user identities
+- Monitoring authentication logs is critical for detecting attacks
+
+---
+
+## Skills Demonstrated
+
+- Windows environment analysis
+- Active Directory fundamentals
+- Authentication concepts
+- Security awareness
