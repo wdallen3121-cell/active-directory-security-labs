@@ -9,15 +9,15 @@ This lab further directs users on how to manage OUs and User objects
 - Use Powershell to chanage user passwords
 
 ## Key Concepts
-| Delegatation of Control Wizard | Server responsible for authentication and directory services |
-| RDP| Microsoft directory service used to manage users, computers, and permissions |
-| Powershell | Logical containers used to organize users and resources |
+| Delegatation of Control Wizard | guided tool used for delegating specific administrative tasks(over an OU/container) |
+| RDP | Microsoft protocol for remote login and control of Windows desktops
+| Powershell | built-in Microsoft command-line shell and scripting language |
 
 ## Environment
 Platform: TryHackMe
-Operating System: Windows Server
+Operating System: Windows Server 2019
 Directory Service: AD DS
-CLT: Powershell
+Command-line Tool: Powershell
 
 ## Lab Walkthrough
 
@@ -39,47 +39,27 @@ CLT: Powershell
 - Right-click the OU/User to be deleted
 - Select 'Yes' when prompted to verify the deletion request
 
-### Step 3 – Identify Key Components
-Explain the important objects or services.
+### Change Passwords(using Powershell)
+- Run Powershell as Admin
+- Type: Set-ADAccountPassword username123 -Reset -NewPassword (Read-Host -AsSecureString -Prompt 'New Password') -Verbose
+- set new password(when prompted)
+
+### Force a Password Resest(at next Logon)
+- Run Powershell as Admin
+- Type:  Set-ADuser -ChangePasswordAtLogon $true -Identity username123 -Verbose
 
 ---
 
 ## Security Relevance
-
-Why this matters for cybersecurity.
-
-Example:
-
-Active Directory is a primary target for attackers because it controls authentication and authorization across enterprise networks.
-
-Compromise of a Domain Controller can lead to full domain compromise.
-
----
-
-## SOC Analyst Perspective
-
-What security teams monitor.
-
-- Suspicious login attempts
-- Privilege escalation
-- Account lockouts
-- Unusual authentication patterns
-
----
+Large organizations may require users other than domain admins to handle administration of other users and groups. Delegating the correct amount of privilege needed for tasks increases efficiency and mitigates single points of failures and bottlenecks. Passwords are a common attack point for malicious actors, regularly changing passwords increases a organizations security profile.
 
 ## Key Takeaways
-
-Summarize the main lessons learned.
-
-- Active Directory centralizes authentication
-- Domain controllers validate user identities
-- Monitoring authentication logs is critical for detecting attacks
-
----
+- Proper provisioning and configuration of accounts saves time and increases security
+- RDP should be used along with a VPN to prevent direct exposure to the internet
+- Powershell allows users who may not have access to Active Directory Software to still complete tasks
 
 ## Skills Demonstrated
 
-- Windows environment analysis
-- Active Directory fundamentals
-- Authentication concepts
-- Security awareness
+- ADUC delgation of OUs
+- Powershell scripting
+- accessing systems through RDP
