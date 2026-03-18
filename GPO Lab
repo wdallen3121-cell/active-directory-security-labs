@@ -1,0 +1,40 @@
+# Group Policy Management
+
+## Lab Overview
+This lab focuses on applyingn GPOs to OUs. Central management of users and computer settings and testing of the configurations.
+
+## Objectives
+- Explore the different capabilities of Group Policy Management
+- Create and Apply GPOs to OUs
+- Verify the GPOs have been applied to domain devices
+
+## Key Concepts
+| GPO(Group Policy Object) | Set of configuration rules applied to domain-joined users and computers |
+| GPM(Group Policy Management )| Microsoft admin tool used to create, edit, link and troubleshoot GPOs |
+| SYSVOL | folder shared by all DCs in a Domain. Ensures policies/scripts are replicated to all domain-joined accounts |
+
+## Environment
+Platform: TryHackMe  
+Operating System: Windows Server 2019
+Software: Group Policy Management Console
+
+## Lab Walkthrough
+
+### Change minimum password length for domain-joined computers
+- Select 'Default Domain Policy' > Select 'Edit' > Select Computer Configurations > Security Settings > Account Policies > Password Policies > Change Required Policy Value
+- This is a high-priority step when configuring any domain.
+
+### Restrict Access to Control Panel
+- Create new GPO(called "restrict control panel access") > Select 'Edit' > Click  User Configuration > Click Policies > Click Adniminstrative Templates > Contro Pannel > Enable 'Prohibit Access to Control Panel and PC settings' > Drag the GPO to each OU that shouldn't have access to the Control Panel
+- This is completed to mitigate issues due to misconfigurations or actions of malicious users
+
+### Force Computer to sync the GPO(immediately)
+- Run Powershell as Admin > Type: gpupdate /force
+- When a GPO has been made, it may take up to (2) hours to sync. It may be necessary for critical configuration changes to be applied immediately
+
+
+## Security Relevance
+GPO's are a primary preventative step to protecting a network usingn built-in tool in a Windows environment. 
+
+- Authentication concepts
+- Security awareness
