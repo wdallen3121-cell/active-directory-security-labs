@@ -1,0 +1,45 @@
+# Windows Authentication Methods
+
+## Lab Overview
+This lab explores the (2) Authentication methods used by Windows for users to access domain-provided services
+
+## Objectives
+- Understand the how Kerberos and NTLM authenticate users
+- Identify the components of Kerberos that allow authentication
+- Learn how NTLM can be used securely for compatible systems
+
+## Key Concepts
+| Kerberos | Windows authentication protcol for logging into directory services |
+| NTLM (NT LAN Manager| Legacy authentication protocol kept for compatibility purposes |
+| KDC(Key Distribution Center) | Kerberos authentication service that runs on a DC |
+| TGT(Ticket Granting Ticket) | Temporary means of authentication presented to a KDC to validate a user and request TGS |
+| Session Key | Temporary key provided along with TGT to gain access to a specific service |
+| TGS(Ticket Granting Service) | Function of the KDC that provides TGS tickets to users to gain access to services on the network |
+| SPN(Service Principal Name) | Unique identifier providing which account a service belongs to and the encryption method | 
+| Service Owner Hash | Long-term key used to encrypt part of a session key ensuring on the service can decrypt/read client identity information |
+
+## Environment
+Platform: TryHackMe 
+## Lab Walkthrough
+
+### Kerberos Authentication Flow
+- 1) User sends username and timestamp(encrypted from their password)
+- 2) KDC receives user authentication request
+- 3) KDC creates and sends back TGT along with Session Key(enabling user to requets TGS Tickets)
+- 4) TGS Ticket is sent to desired service
+- 5) Service will use it' account password to decrypt TGS
+
+### NTLM Authentication
+- 1) Client send authentication requets to the server they want to access
+- 2) Server generates random number then sends it as a 'challenge' to the client
+- 3) Client combines their password hash with the random challenge number and other data to generate a 'response to the challenge'
+- 4) Client sends 'response to the challenge' to the server for verification
+- 5) Server forwards 'random challenge number' and 'response to challenge' to the DC for verification
+- 6) DC compares 'challenge' and 'response to challenge'. Authenitcates client if sent information matches.
+
+## Security Relevance
+- Kerberos enables SSO, which reduces amount of times passwords are transferred across a network
+- Kerberos allows temporary access to services. Reduces risk of unauthorized access
+- NTLM can be used as a fallback option incase the Kerberos service is unavailable
+- Authentication concepts
+- Security awareness
